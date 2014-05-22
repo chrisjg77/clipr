@@ -1,0 +1,24 @@
+  <!-- Load Scripts -->
+  <!-- Marionette Application. -->
+  <script src="vendor/require.js"></script>
+  <script src="js/config.js"></script>
+  <script>
+
+    // Allow easy access to JSON.stringify()'d data.
+    {{#each json}}
+      define('{{@key}}', function (require) {
+        return {{{this}}};
+      });
+    {{/each}}
+
+    define('conf', function(require) {
+      return {{{stringify conf}}};
+    })
+    // Start the app.
+    require(['apps/clipr'], function (app) {
+      app.start();
+    });
+  </script>
+
+  </body>
+</html>

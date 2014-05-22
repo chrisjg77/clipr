@@ -1,0 +1,20 @@
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.DS_Store
+
+pids
+logs
+results
+
+npm-debug.log
+node_modules
+.rebooted
+
+# We are not commiting css files since they get created when the app boots.
+public/css/*

@@ -1,0 +1,35 @@
+<div class="actions text-centered animated fadeInDown">
+  {{#if isNew}}
+    <div class="btn-group">
+      <a href="#" class="btn btn-rounded facebook fb-sign">
+        <div class="btn-inner">
+          <span><i class="fa fa-facebook"></i></span><span>{{{conf.actions.sign.facebookButton}}}</span>
+        </div>
+      </a>
+      <a href="#" class="btn btn-rounded show-form">
+        <div class="btn-inner">
+          <span><i class="fa fa-pencil"></i></span><span>{{{conf.actions.sign.formButton}}}</span>
+        </div>
+      </a>
+    </div>
+    <br />
+    {{!-- <h2 class="signer-count">Join {{signCount}} Signers.</h2> --}}
+    {{!-- <h3>{{{conf.actions.sign.body}}}</h3> --}}
+    <h3>{{{conf.actions.sign.body}}}</h3>
+  {{else}}
+    <div class="btn-group">
+      <a href="#" class="btn btn-rounded facebook fb-share">
+        <div class="btn-inner">
+          <span><i class="fa fa-facebook"></i></span><span>{{{conf.actions.share.facebookButton}}}</span>
+        </div>
+      </a>
+      <a href="https://twitter.com/intent/tweet?url={{url}}&amp;text={{conf.twitter.description}}" class="btn btn-rounded twitter twitter-share">
+        <div class="btn-inner">
+          <span><i class="fa fa-twitter"></i></span><span>{{{conf.actions.share.twitterButton}}}</span>
+        </div>
+      </a>
+    </div>
+    <h2 class="thank-you xs-hide">{{{conf.actions.share.title}}}</h2>
+    <h3 class="xs-hide">{{{conf.actions.share.body}}}</h3>
+  {{/if}}
+</div>
