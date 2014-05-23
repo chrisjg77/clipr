@@ -7,6 +7,7 @@ define(function (require) {
 
   var MainView = Marionette.ItemView.extend({
     template: require('hbs!main'),
+    className: 'wrapper',
     templateHelpers: {'conf':conf},
 
     ui: {
@@ -15,16 +16,35 @@ define(function (require) {
       link: '.source-link',
       linkForm: '.form-link',
       upload: '.source-upload',
-      uploadForm: '.form-upload'
+      uploadForm: '.form-upload',
+      sourceForm: '.form-source',
+      video: '.video',
+      next: '.next-step'
     },
 
     events: {
       'click @ui.link': 'showLinkForm',
-      'focus @ui.inputUrl': 'goToNext'
+      'keyup @ui.inputUrl': 'goToNext',
+      'click @ui.next': 'goToNext'
     },
 
     initialize: function (options) {
       this.step = 1;
+    },
+
+    onDomRefresh: function() {
+      var self = this,
+          vid_w = self.ui.video.width(),
+          vid_h = vid_w*0.565;
+
+      this.ui.video.css('height',vid_h);
+
+      $(window).on('resize', function() {
+        var vid_w = self.ui.video.width(),
+            vid_h = vid_w*0.565;
+
+        self.ui.video.css('height',vid_h);
+      });
     },
 
     templateHelpers: function () {
@@ -35,7 +55,7 @@ define(function (require) {
       );
      },
 
-    goToNext: function() {
+    goToNext: function(e) {
       this.renderStep(this.step++);
     },
 

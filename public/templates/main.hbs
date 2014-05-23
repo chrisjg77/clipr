@@ -1,12 +1,11 @@
 
-<div class="wrapper">
-  {{#is step 1}}
+{{#is step 1}}
   <div class="step">
-    <div class="step-header">
+    <div class="step-header animated fadeInDown">
       <h1 class="step-title">Select Your Video</h1>
-      <p class="step-description">Cool video bro.</p>
+      <p class="step-description">Select a video to use, either from a video hosting service or from your computer or device.</p>
     </div>
-    <div class="step-body wrapper">
+    <div class="step-body wrapper animated fadeInUp">
       <div class="source-select clearfix">
         <div class="block block-6">
           <a href="#" class="source-link">
@@ -21,24 +20,59 @@
           <em class="select-meta">Upload a video.</em>
         </div>
       </div>
-      <div class="form form-source form-link onload-hidden">
+      <form class="form form-source form-link onload-hidden">
         <div class="input-url">
           <span>http://</span>
           <input type="text">
         </div>
         <p class="input-description">Paste a link from your video hosting service of course. (YouTube, VImeo, etc.)</p>
-      </div>
+      </form>
     </div>
   </div>
-  {{/is}}
+{{/is}}
 
-  {{#is step 2}}
-  <div class="step animated fadeInDown">
-    <div class="step-header">
+{{#is step 2}}
+  <div class="step">
+    <div class="step-header animated fadeInDown">
       <h1 class="step-title">Trim Your Clip</h1>
-      <p class="step-description">Cool video bro.</p>
+      <p class="step-description">Use the slider to pick which 10 seconds of the video you would like to loop.</p>
+    </div>
+    <div class="step-body animated fadeInUp">
+      <div class="workspace">
+        <iframe width="100%" class="video" src="//www.youtube.com/embed/fUiZ5vz9pUw" frameborder="0" allowfullscreen></iframe>
+
+        <div class="slider">
+          <div class="slider-handle"></div>
+        </div>
+      </div>
+
+      <button class="btn block-centered next-step">Trim Clip</button>
     </div>
   </div>
-  {{/is}}
+{{/is}}
 
-</div>
+{{#is step 3}}
+  <div class="step">
+    <div class="step-header animated fadeInDown">
+      <h1 class="step-title">Scale and Crop Your Clip</h1>
+      <p class="step-description">Use the slider to pick which 10 seconds of the video you would like to loop.</p>
+    </div>
+    <div class="step-body animated fadeInUp">
+      <div class="workspace">
+        <div class="crop-overlay">
+            <div class="crop-bar crop-top-bar"></div>
+            <div class="crop-bar crop-bottom-bar"></div>
+          </div>
+        <iframe width="100%" class="video" src="//www.youtube.com/embed/fUiZ5vz9pUw" frameborder="0" allowfullscreen></iframe>
+
+        <div class="slider">
+          <div class="slider-handle"></div>
+        </div>
+      </div>
+
+      <button class="btn block-centered next-step">Trim Clip</button>
+    </div>
+  </div>
+{{/is}}
+
+

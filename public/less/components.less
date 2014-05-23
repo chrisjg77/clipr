@@ -8,7 +8,7 @@
   color: @step_title_color;
 }
 .step-description {
-  font-size: 1.4em;
+  font-size: 1.1em;
   color: @step_desc_color;
   text-align: center;
 }
@@ -49,7 +49,7 @@
 }
 input {
   border: none;
-  padding: 1em 1em;
+  padding: 0.75em 1em;
   width: 100%;
   font-size: 24px;
   .box-shadow(none);
@@ -65,7 +65,7 @@ input {
     display: inline-block;
     width: 20%;
     text-align: center;
-    padding: 1.2em 1em;
+    padding: 1em 1em;
     background: @form_bg_color;
     border-right: 1px solid @border_color;
   }
@@ -75,16 +75,68 @@ input {
     outline: none;
   }
 }
-
 .input-description {
   color: #d8d8d8;
   text-align: center;
   color: @form_dark_text_color;
 }
 
+/**
+ * Video edit workspace.
+ */
 .workspace {
   width: 100%;
-  height: 500px;
-  margin: 2em 0;
-  background: #e3e3e3;
+  margin: 4em 0;
+  position: relative;
+}
+
+.slider {
+  width: 100%;
+  height: 7px;
+  margin: 3em 0;
+  .border-radius(5px);
+  background: @slider_bg_color;
+  position: relative;
+}
+.slider-handle {
+  width: 10%;
+  height: 15px;
+  background: #333;
+  position: absolute;
+  top: -4px;
+  left: 37%;
+  .border-radius(5px);
+}
+
+.crop-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.crop-bar {
+  height: 115px;
+  background: rgba(255,255,255,0.9);
+  position: absolute;
+  width: 100%;
+}
+.crop-top-bar {
+  top: 0;
+}
+.crop-bottom-bar {
+  bottom: 0;
+}
+
+.btn {
+  display: block;
+  margin-top: 115px;
+  margin-bottom: 100px;
+  padding: 1em 2em;
+  width: 170px;
+  background: #333;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  .border-radius(15px);
 }
