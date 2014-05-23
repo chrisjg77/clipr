@@ -7,7 +7,7 @@ define(function (require) {
   // require('transit');
 
   // App-level plugins.
-  // require('plugins/errors');
+  require('plugins/handlebars');
 
   // Add app-level regions.
   app.addRegions({

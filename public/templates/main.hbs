@@ -1,1 +1,44 @@
-<h1>{{conf.site.title}}</h1>
+
+<div class="wrapper">
+  {{#is step 1}}
+  <div class="step">
+    <div class="step-header">
+      <h1 class="step-title">Select Your Video</h1>
+      <p class="step-description">Cool video bro.</p>
+    </div>
+    <div class="step-body wrapper">
+      <div class="source-select clearfix">
+        <div class="block block-6">
+          <a href="#" class="source-link">
+            <i class="select-icon fa fa-link"></i>
+          </a>
+          <em class="select-meta">Copy and paste a link.</em>
+        </div>
+        <div class="block block-6">
+          <a href="#" class="source-upload">
+            <i class="select-icon fa fa-cloud-upload"></i>
+          </a>
+          <em class="select-meta">Upload a video.</em>
+        </div>
+      </div>
+      <div class="form form-source form-link onload-hidden">
+        <div class="input-url">
+          <span>http://</span>
+          <input type="text">
+        </div>
+        <p class="input-description">Paste a link from your video hosting service of course. (YouTube, VImeo, etc.)</p>
+      </div>
+    </div>
+  </div>
+  {{/is}}
+
+  {{#is step 2}}
+  <div class="step animated fadeInDown">
+    <div class="step-header">
+      <h1 class="step-title">Trim Your Clip</h1>
+      <p class="step-description">Cool video bro.</p>
+    </div>
+  </div>
+  {{/is}}
+
+</div>
