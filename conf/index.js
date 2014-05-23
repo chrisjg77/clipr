@@ -1,7 +1,7 @@
 var conf = {
   site: {
     title: 'Clipr',
-    description: 'Add description here',
+    description: 'Clipr is a simple interface for creating short video loops to use for HTML5 backgrounds.',
   },
   styles: [
     {'link':'/css/app.css'},
