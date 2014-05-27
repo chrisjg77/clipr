@@ -5,6 +5,9 @@ define(function (require) {
     , _ = require('underscore')
     ;
 
+  // App-level plugins.
+  require('plugins/range-slider');
+
   var MainView = Marionette.ItemView.extend({
     template: require('hbs!main'),
     className: 'wrapper',
@@ -29,7 +32,7 @@ define(function (require) {
     },
 
     initialize: function (options) {
-      this.step = 1;
+      this.step = 2;
     },
 
     onDomRefresh: function() {
@@ -37,8 +40,10 @@ define(function (require) {
           vid_w = self.ui.video.width(),
           vid_h = vid_w*0.565;
 
-      this.ui.video.css('height',vid_h);
+      app.rangeSlider.init();
 
+      // Adjust video height
+      this.ui.video.css('height',vid_h);
       $(window).on('resize', function() {
         var vid_w = self.ui.video.width(),
             vid_h = vid_w*0.565;

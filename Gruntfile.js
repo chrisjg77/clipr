@@ -52,19 +52,19 @@ module.exports = function (grunt) {
         files: ['public/less/*.less'],
         tasks: ['less:style'],
         options: {
-          livereload: true
+          livereload: 35730
         }
       },
       public: {
         files: ['public/**'],
         options: {
-          livereload: true
+          livereload: 35730
         }
       },
       server: {
         files: ['.rebooted'],
         options: {
-          livereload: true
+          livereload: 35730
         }
       }
     }

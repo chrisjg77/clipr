@@ -27,7 +27,9 @@ requirejs.config({
     'text': '../vendor/require.text',
     'typeahead': '../vendor/typeahead.jquery',
     'parallax': '../vendor/jquery.parallax',
-    'vague': '../vendor/Vague'
+    'vague': '../vendor/Vague',
+    'jquery-ui': '../vendor/jquery-ui',
+    'range-slider': '../vendor/jquery.range-slider'
   },
 
   // Shims for non-AMD compatible libraries.
@@ -68,6 +70,9 @@ requirejs.config({
       deps: ['jquery']
     },
     'vague': {
+      deps: ['jquery']
+    },
+    'jquery-ui': {
       deps: ['jquery']
     }
   }
