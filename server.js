@@ -8,7 +8,7 @@ var express = require('express')
   ;
 
 var routes = require('./routes/index');
-var about = require('./routes/about');
+var edit = require('./routes/edit');
 
 var server = express();
 
@@ -30,7 +30,7 @@ server.use(require('less-middleware')(path.join(__dirname, 'public')));
 server.use(express.static(path.join(__dirname, 'public')));
 
 server.use('/', routes);
-server.use('/about', about);
+server.use('/edit', edit);
 
 /// catch 404 and forward to error handler
 server.use(function(req, res, next) {

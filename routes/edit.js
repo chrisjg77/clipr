@@ -4,7 +4,7 @@ var conf = require('./../conf')();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('about',{'conf':conf});
+  res.render('edit',{'conf':conf});
 });
 
 module.exports = router;
