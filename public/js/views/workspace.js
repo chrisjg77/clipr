@@ -8,10 +8,10 @@ define(function (require) {
   // App-level plugins.
   require('plugins/range-slider');
 
-  var MainView = Marionette.ItemView.extend({
-    template: require('hbs!main'),
-    className: 'wrapper',
+  var WorkspaceView = Marionette.ItemView.extend({
+    template: require('hbs!workspace'),
     templateHelpers: {'conf':conf},
+    className: 'workspace animated slideInRight',
 
     ui: {
       sourceSelect: '.source-select',
@@ -80,6 +80,6 @@ define(function (require) {
 
   });
 
-  return MainView;
+  return WorkspaceView;
 
 });

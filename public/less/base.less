@@ -2,19 +2,41 @@
   .box-sizing(border-box);
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-size: 16px;
   font-family: @main_font_stack;
+  height: 100%;
+}
+
+header {
+  position: relative;
+  z-index: 100;
+  padding-top: 1px;
+}
+
+.main {
+  position: relative;
+  z-index: 99;
+  padding-left: 5%;
+  padding-right: 5%;
+  min-height: 100%;
+  margin-top: -70px;
 }
 
 #app-main {
-  height: 100px;
-  width: 80%;
-  margin: 10% auto;
+  height: 100%;
+  // width: 80%;
+  // margin: 10% auto;
 }
 
 p {
-  font-weight: 300;
+  font-weight: 200;
+  line-height: 1.7;
+  margin-bottom: 25px;
 }
 
 em {
@@ -23,11 +45,14 @@ em {
 }
 
 h1,h2,h3,h4 {
-  margin-bottom: 0.5em;
+  margin-bottom: 25px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 a {
   text-decoration: none;
+  color: #2980b9;
   .transition(all 0.5s ease-in-out);
 
   * {
@@ -40,4 +65,27 @@ a:hover {
   * {
     color: @active_color;
   }
+}
+
+/**
+ * Forms.
+ */
+form {
+  margin: 25px 0;
+}
+
+input {
+  font-family: @main_font_stack;
+  font-weight: 200;
+  line-height: 1.5;
+  border: none;
+  padding: 19px 20px 17px;
+  width: 100%;
+  font-size: 24px;
+  outline: none;
+  .box-shadow(none);
+}
+
+button {
+  font-family: @main_font_stack;
 }

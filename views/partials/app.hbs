@@ -6,9 +6,11 @@
       });
     {{/each}}
 
+    // Load config variables
     define('conf', function(require) {
       return {{{stringify conf}}};
-    })
+    });
+
     // Start the app.
     require(['apps/clipr'], function (app) {
       app.start();

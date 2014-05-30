@@ -1,6 +1,6 @@
 define(function (require) {
   var app = require('app')
-    , MainView = require('views/main')
+    , LayoutView = require('views/layout')
     ;
 
   // Libs.
@@ -11,14 +11,14 @@ define(function (require) {
 
   // Add app-level regions.
   app.addRegions({
-    main: '#app-main'
+    layout: '#app-main'
   });
 
   // Instantiate an empty signer model to act upon.
   // var signer = new Signer();
 
   // Show views in regions.
-  app.main.show(new MainView());
+  app.layout.show(new LayoutView());
 
   // Return modified app.
   return app;

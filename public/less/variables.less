@@ -3,12 +3,22 @@
  * General Settings
  **/
 
-@main_font_stack: 'Open Sans','Helvetica',sans-serif;
+@main_font_stack: 'Sinkin Sans', 'Open Sans','Helvetica',sans-serif;
 
 @active_color: #2980b9;
 @border_color: lighten(#979797,20%);
 
 @light_grey: #D5D4D4;
+
+
+
+@video_overlay_bg: rgba(0,0,0,0.6);
+
+/*
+ * Toolbar
+ **/
+@toolbar_bg_color: lighten(@light_grey,10%);
+
 
 /*
  * Steps UI
@@ -17,7 +27,7 @@
 @step_desc_color: #b7b7b7;
 
 @source_select_icon_color: #C5C5C5;
-@source_select_meta_color: #D5D4D4;
+@source_select_meta_color: @light_grey;
 
 @form_bg_color: #f7f7f7;
 @form_light_text_color: #ADADAD;

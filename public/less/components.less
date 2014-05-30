@@ -1,4 +1,189 @@
 /**
+ * Site.
+ **********************************************************/
+.site-title {
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 25px 5%;
+  color: #fff;
+}
+.site-tagline {
+  font-size: 36px;
+  color: #fff;
+}
+.site-landing {
+  position: absolute;
+  bottom: 30%;
+  max-width: 900px;
+}
+
+.site-landing-text {
+  color: #c1c1c1;
+}
+
+.site-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-top: 1px;
+  padding-right: 5%;
+  a {
+    display: block;
+    font-weight: 200;
+    font-size: 15px;
+    padding: 27px 10px;
+  }
+
+  li {
+    display: inline-block;
+  }
+}
+
+.site-landing-form {
+  margin-top: 50px;
+
+  input {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.3);
+    padding-left: 240px;
+    color: #fff;
+  }
+}
+
+.url-input {
+  position: relative;
+  font-weight: 200;
+
+  span {
+    font-size: 24px;
+    background: rgba(255,255,255,0.4);
+    display: inline-block;
+    width: 190px;
+    text-align: center;
+    padding: 27px 1em 23px;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    z-index: 0;
+    color: #fff;
+  }
+  input {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.site-link {
+  color: #c1c1c1;
+}
+
+.action-link {
+  color: #fff;
+  padding: 25px 25px !important;
+  // background: rgba(0,0,0,0.3);
+}
+
+
+/**
+ * Wrappers.
+ */
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.wrapper-default {
+  width: 720px;
+}
+
+.wrapper-edit {
+  height: 100%;
+}
+
+/**
+ * Video Background.
+ */
+.video-background-wrapper {
+  min-height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.video-background-overlay {
+  min-width: 100%;
+  min-height: 100%;
+  background: @video_overlay_bg;
+  position: absolute;
+}
+
+.video-background {
+  min-height: 100%;
+  min-width: 150%;
+  margin-left: -50%;
+}
+
+/**
+ * App.
+ **********************************************************/
+.app-title {
+  .site-title;
+  color: #ccc;
+}
+
+
+/**
+ * Toolbar
+ */
+.toolbar {
+  width: 350px;
+  background: @toolbar_bg_color;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.toolbar-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  a {
+    display: inline-block;
+    padding: 25px 25px;
+    color: #333;
+  }
+}
+
+.icon {
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  margin-right: 10px;
+  height: 18px;
+  width: 18px;
+  .transition(all 0.375s ease-in-out);
+}
+
+.icon-close {
+  background: url('../img/icon-close.png') no-repeat;
+  background-size: 100%;
+}
+
+a:hover {
+  .icon {
+    .transform(rotate(270deg));
+  }
+}
+
+/**
  * Steps.
  */
 .step-title {
@@ -47,13 +232,7 @@
   left: 0;
   width: 100%;
 }
-input {
-  border: none;
-  padding: 0.75em 1em;
-  width: 100%;
-  font-size: 24px;
-  .box-shadow(none);
-}
+
 .input-url {
   margin: 1em 10%;
   border: 1px solid @border_color;
@@ -90,8 +269,8 @@ input {
 }
 
 .workspace {
-  width: 100%;
-  margin: 4em 0;
+  padding-left: 300px;
+  margin: 0 0;
   position: relative;
 }
 
@@ -138,10 +317,11 @@ input {
   margin-top: 115px;
   margin-bottom: 100px;
   padding: 1em 2em;
-  width: 170px;
   background: #333;
   border: none;
   color: #fff;
   font-size: 18px;
-  .border-radius(15px);
+  font-weight: 200;
+  text-transform: uppercase;
+  cursor: pointer;
 }

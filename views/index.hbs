@@ -1,3 +1,37 @@
 {{> header}}
-  <h1>Home</h1>
+  <header>
+    <div class="site-title">Slice</div>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="#" class="site-link">Discover</a></li>
+        <li><a href="#" class="site-link">About</a></li>
+        <li><a href="#" class="site-link">Blog</a></li>
+        <li><a href="#" class="action-link">Log In</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="main">
+    <div class="site-landing">
+      <h1 class="site-tagline">Who wants the whole pie, really?</h1>
+      <p class="site-landing-text">Angler Black scabbardfish seatrout Rainbow trout--yellow weaver pikeblenny, bigeye sheatfish tetra. Blue shark armored searobin banded killifish airbreathing catfish ricefish ribbon sawtail fish, threadsail, "shrimpfish," hussar, grideye Rio Grande perch? Milkfish blue catfish Rainbowfish.</p>
+
+      <form class="site-landing-form" action="/edit" method="get" autocomplete="off">
+        <div class="url-input">
+          <span>http://</span>
+          <input name="url" type="text">
+        </div>
+      </form>
+      <p class="site-landing-text">Or, <a href="#">upload a video</a> from your device.</p>
+    </div>
+  </div>
+
+  <div class="video-background-wrapper">
+    <div class="video-background-overlay"></div>
+    <video class="video-background" autoplay muted loop>
+      <source src="img/sample.mp4" />
+    </video>
+  </div>
+{{> scripts}}
+
 {{> footer}}
