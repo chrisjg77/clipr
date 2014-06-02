@@ -5,13 +5,25 @@ define(function (require) {
     , _ = require('underscore')
     ;
 
-  // App-level plugins.
-  require('plugins/range-slider');
-
   var ToolbarView = Marionette.ItemView.extend({
     template: require('hbs!toolbar'),
     templateHelpers: {'conf':conf},
     className: "toolbar animated slideInLeft",
+
+    ui: {
+      close: '.toolbar-close',
+      toolbar: '.toolbar'
+    },
+
+    events: {
+      'click @ui.close': 'exitEditor'
+    },
+
+    exitEditor: function(e) {
+      this.$el.addClass('slideOutLeft');
+      window.location = '/';
+      e.preventDefault();
+    }
 
   });
 

@@ -99,8 +99,16 @@
   width: 720px;
 }
 
-.wrapper-edit {
+.wrapper-editor {
   height: 100%;
+  padding-left: @toolbar_w;
+}
+
+.wrapper-preview,
+.wrapper-workspace {
+  padding: 35px;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 /**
@@ -142,7 +150,7 @@
  * Toolbar
  */
 .toolbar {
-  width: 350px;
+  width: @toolbar_w;
   background: @toolbar_bg_color;
   height: 100%;
   position: absolute;
@@ -181,6 +189,41 @@ a:hover {
   .icon {
     .transform(rotate(270deg));
   }
+}
+
+.toolbar {
+  color: @toolbar_color;
+}
+
+.toolbar-nav {
+  padding: 20% 5%;
+
+  li {
+    margin-bottom: 25px;
+    opacity: 0.35;
+  }
+  .active {
+    opacity: 1;
+  }
+}
+
+.number-round {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: @toolbar_color;
+  color: @toolbar_bg_color;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 2.8;
+  margin-right: 20px;
+}
+
+/**
+ * Preview.
+ */
+.preview-video {
+  width: 100%;
 }
 
 /**
@@ -269,9 +312,18 @@ a:hover {
 }
 
 .workspace {
-  padding-left: 300px;
   margin: 0 0;
   position: relative;
+}
+
+.tool-header {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.tool-description {
+  color: @tool_desc_color;
+  font-size: @tool_desc_fontsize;
 }
 
 .slider {
@@ -284,12 +336,49 @@ a:hover {
 }
 .slider-handle {
   width: 10%;
+  height: 7px;
+  background: @slider_handle_color;
+  position: absolute;
+  // top: -4px;
+  left: 0;
+  cursor: ew-resize;
+  .border-radius(5px);
+}
+
+.handle-point {
+  width: 15px;
   height: 15px;
-  background: #333;
+  border: 5px solid @slider_handle_color;;
   position: absolute;
   top: -4px;
-  left: 0;
-  .border-radius(5px);
+  background: #fff;
+  .border-radius(50%);
+}
+.handle-point.start {
+  left: -5px;
+}
+.handle-point.end {
+  right: -5px;
+}
+
+.loop-frame-wrapper {
+  width: 50%;
+  float: left;
+}
+.loop-frame {
+  width: 75%;
+  float: left;
+}
+.loop-frame-end {
+  float: right;
+}
+.loop-frame-time {
+  font-size: 32px;
+  color: @tool_desc_color;
+  padding: 20px;
+  line-height: 1;
+  width: 25%;
+  float: left;
 }
 
 .crop-overlay {
@@ -324,4 +413,12 @@ a:hover {
   font-weight: 200;
   text-transform: uppercase;
   cursor: pointer;
+  display: inline-block;
+}
+
+.btn-next {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 5em;
 }

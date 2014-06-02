@@ -1,6 +1,5 @@
 define(function (require) {
   var app = require('app')
-    , $video = $('.video')[0]
     ;
 
   // Vendor plugins.
@@ -11,58 +10,94 @@ define(function (require) {
 
   app.rangeSlider.init = function() {
 
-    $('.video')[0].autoplay = true;
-    $('.video')[0].muted = true;
+    $preview_video = $('.preview-video')[0],
+    $start_frame = $('.loop-frame-start')[0],
+    $end_frame = $('.loop-frame-end')[0];
 
-    var start_time = 0;
+    var interval = ""
+      , preview_duration = ""
+      , slider_w = $('.slider').width()
+      , user_duration = 10
+      ;
 
-    var looper = setInterval(function() {
-      $('.video')[0].currentTime = start_time;
-      $('.video')[0].play();
-    },10000);
+    $preview_video.addEventListener("loadedmetadata", function() {
+      preview(0);
+      preview_duration = $preview_video.duration;
+    });
+
+    $start_frame.addEventListener("loadedmetadata", function() {
+      this.currentTime = 1;
+    });
+
+    $end_frame.addEventListener("loadedmetadata", function() {
+      this.currentTime = user_duration;
+    });
 
     $('.slider-handle').draggable({
       axis: 'x',
-      containment: ".slider",
+      containment: '.slider',
       drag: function() {
-        var slider_w = $('.slider').width(),
-            vid_time = $('.video')[0].duration,
-            px_to_min = vid_time/slider_w,
-            pos = $(this).position().left,
-            end_time = start_time+10;
 
-        $('.video')[0].currentTime = start_time;
-        $('.video')[0].pause();
+        var pos = $(this).position().left
+          , frame_start_time = pos*pxToMin(slider_w,preview_duration)
+          , frame_end_time = frame_start_time + user_duration
+          ;
+
+        updatePreviewFrames(frame_start_time,frame_end_time);
+
       },
       stop: function() {
-        var slider_w = $('.slider').width(),
-            vid_time = $('.video')[0].duration,
-            px_to_min = vid_time/slider_w,
-            pos = $(this).position().left,
-            end_time = start_time+10;
+        var pos = $(this).position().left
+          , preview_start_time = pos*pxToMin(slider_w,preview_duration)
+          , preview_end_time = preview_start_time + user_duration
+          ;
 
-        start_time = pos*px_to_min;
-
-        $('.video')[0].currentTime = start_time;
-        $('.video')[0].play();
-
-        // console.log(vid_time);
-        // console.log('Stopped dragging at '+pos+'px or '+timify(start_time)+'. Will stop at '+timify(end_time));
+        preview(preview_start_time);
       }
     });
-  };
 
-  function timify(time) {
-    var minutes = Math.floor(time / 60),
-        seconds = (Math.round(time - minutes*60)).toString();
-
-    if (seconds.length <= 1) {
-      console.log(seconds);
-      seconds = '0'+seconds;
+    function pxToMin(width, duration) {
+      var vid_duration = duration
+        , px_to_min = vid_duration/width
+        ;
+      return px_to_min;
     }
 
-    return minutes+':'+seconds;
+    function preview(start) {
+      var start_time = start;
+
+
+      clearInterval(interval);
+
+      $preview_video.currentTime = start_time;
+      $preview_video.play();
+
+      interval = setInterval(function() {
+        $preview_video.currentTime = start_time;
+        $preview_video.play();
+      },10000);
+
+    };
+
+    function updatePreviewFrames(start,end) {
+      $start_frame.currentTime = start;
+      $end_frame.currentTime = end;
+
+      $('.loop-frame-time.time-start').text(timify(start));
+      $('.loop-frame-time.time-end').text(timify(end));
+    }
+
+    function timify(time) {
+      var minutes = Math.floor(time / 60),
+          seconds = (Math.round(time - minutes*60)).toString();
+
+      if (seconds.length <= 1) {
+        seconds = '0'+seconds;
+      }
+
+      return minutes+':'+seconds;
+    };
+
+
   };
-
-
 });

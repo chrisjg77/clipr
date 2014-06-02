@@ -10,8 +10,7 @@ define(function (require) {
 
   var WorkspaceView = Marionette.ItemView.extend({
     template: require('hbs!workspace'),
-    templateHelpers: {'conf':conf},
-    className: 'workspace animated slideInRight',
+    className: 'workspace animated slideInUp',
 
     ui: {
       sourceSelect: '.source-select',
@@ -36,28 +35,16 @@ define(function (require) {
     },
 
     onDomRefresh: function() {
-      var self = this,
-          vid_w = self.ui.video.width(),
-          vid_h = vid_w*0.565;
 
       app.rangeSlider.init();
 
-      // Adjust video height
-      this.ui.video.css('height',vid_h);
-      $(window).on('resize', function() {
-        var vid_w = self.ui.video.width(),
-            vid_h = vid_w*0.565;
-
-        self.ui.video.css('height',vid_h);
-      });
     },
 
     templateHelpers: function () {
-       return _.extend({},
-        {
+       return {
+          conf: conf,
           step: this.step,
         }
-      );
      },
 
     goToNext: function(e) {
