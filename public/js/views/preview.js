@@ -10,6 +10,18 @@ define(function (require) {
     templateHelpers: {'conf':conf},
     className: "video-preview animated slideInDown",
 
+    ui: {
+      video: '.preview-video'
+    },
+
+    initialize: function() {
+      var self = this;
+      app.on('change:filter', function(filter) {
+        console.log(filter);
+        self.ui.video.attr('class','preview-video').addClass(filter);
+      });
+    }
+
   });
 
   return PreviewView;

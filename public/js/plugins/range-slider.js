@@ -25,13 +25,18 @@ define(function (require) {
       preview_duration = $preview_video.duration;
     });
 
-    $start_frame.addEventListener("loadedmetadata", function() {
-      this.currentTime = 1;
-    });
 
-    $end_frame.addEventListener("loadedmetadata", function() {
-      this.currentTime = user_duration;
-    });
+    // @todo: check if these elements exist to prevent error
+
+    if ($start_frame && $end_frame) {
+      $start_frame.addEventListener("loadedmetadata", function() {
+        this.currentTime = 1;
+      });
+
+      $end_frame.addEventListener("loadedmetadata", function() {
+        this.currentTime = user_duration;
+      });
+    }
 
     $('.slider-handle').draggable({
       axis: 'x',

@@ -12,11 +12,20 @@ define(function (require) {
 
     ui: {
       close: '.toolbar-close',
-      toolbar: '.toolbar'
+      toolbar: '.toolbar',
+      stepLabel: '.toolbar-nav li'
     },
 
     events: {
       'click @ui.close': 'exitEditor'
+    },
+
+    initialize: function() {
+      var self = this;
+      app.on('change:step', function(step) {
+        self.ui.stepLabel.removeClass('active');
+        self.ui.stepLabel.eq(step-1).addClass('active');
+      });
     },
 
     exitEditor: function(e) {

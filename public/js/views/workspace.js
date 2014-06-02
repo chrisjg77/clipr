@@ -13,56 +13,54 @@ define(function (require) {
     className: 'workspace animated slideInUp',
 
     ui: {
-      sourceSelect: '.source-select',
-      inputUrl: '.input-url input',
-      link: '.source-link',
-      linkForm: '.form-link',
-      upload: '.source-upload',
-      uploadForm: '.form-upload',
-      sourceForm: '.form-source',
-      video: '.video',
-      next: '.next-step'
+      section: 'section',
+      next: '.btn-next',
+      filter: '.filter-option'
     },
 
     events: {
       'click @ui.link': 'showLinkForm',
-      'keyup @ui.inputUrl': 'goToNext',
-      'click @ui.next': 'goToNext'
+      'click @ui.next': 'goToNext',
+      'click @ui.filter': 'filterSelect'
     },
 
     initialize: function (options) {
-      this.step = 2;
+      // @todo: change this to back to 1
+      this.step = 1;
     },
 
     onDomRefresh: function() {
-
       app.rangeSlider.init();
-
     },
 
     templateHelpers: function () {
-       return {
-          conf: conf,
-          step: this.step,
-        }
-     },
+     return {
+        conf: conf,
+        step: this.step,
+      }
+    },
+
+    filterSelect: function(e) {
+      var $el = $(e.currentTarget);
+      var filter = $el.data('filter');
+      // localStorage.setItem('filter',filter);
+      app.trigger('change:filter',filter);
+    },
 
     goToNext: function(e) {
       this.renderStep(this.step++);
     },
 
     renderStep: function(step) {
-      this.render();
-    },
-
-    showLinkForm: function() {
       var self = this;
+      var step = this.step;
 
-      this.ui.sourceSelect.addClass('animated fadeOutUp');
+      app.trigger('change:step',step);
+
+      this.ui.section.addClass('animated fadeOutDown');
       setTimeout(function() {
-        self.ui.linkForm.show().addClass('animated fadeInUp');
-      },275);
-
+        self.render();
+      },500);
     }
 
   });
