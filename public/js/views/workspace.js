@@ -26,7 +26,7 @@ define(function (require) {
 
     initialize: function (options) {
       // @todo: change this to back to 1
-      this.step = 1;
+      this.step = 2;
     },
 
     onDomRefresh: function() {

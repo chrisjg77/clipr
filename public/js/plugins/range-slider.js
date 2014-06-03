@@ -10,6 +10,8 @@ define(function (require) {
 
   app.rangeSlider.init = function() {
 
+    console.log('preview initialized');
+
     $preview_video = $('.preview-video')[0],
     $start_frame = $('.loop-frame-start')[0],
     $end_frame = $('.loop-frame-end')[0];
@@ -18,10 +20,21 @@ define(function (require) {
       , preview_duration = ""
       , slider_w = $('.slider').width()
       , user_duration = 10
+      , preview_start_time = ""
+      , preview_end_time = ""
       ;
 
+    // $('.preview-video').each(function(i) {
+
+    //   $('.preview-video')[i].addEventListener("loadedmetadata", function() {
+    //     preview(0);
+    //     preview_duration = $preview_video.duration;
+    //   });
+
+    // });
+
     $preview_video.addEventListener("loadedmetadata", function() {
-      preview(0);
+      preview($preview_video,0);
       preview_duration = $preview_video.duration;
     });
 
@@ -35,6 +48,17 @@ define(function (require) {
 
       $end_frame.addEventListener("loadedmetadata", function() {
         this.currentTime = user_duration;
+      });
+    }
+
+    if ($('.filter-select')) {
+      $('.filter-option video').each(function(i) {
+        $('.filter-option video')[i].addEventListener("loadedmetadata", function() {
+          // @todo: make this dynamic
+
+          preview($('.filter-option video')[i],preview_start_time);
+
+        });
       });
     }
 
@@ -52,12 +76,12 @@ define(function (require) {
 
       },
       stop: function() {
-        var pos = $(this).position().left
-          , preview_start_time = pos*pxToMin(slider_w,preview_duration)
-          , preview_end_time = preview_start_time + user_duration
-          ;
+        var pos = $(this).position().left;
 
-        preview(preview_start_time);
+        preview_start_time = pos*pxToMin(slider_w,preview_duration);
+        preview_end_time = preview_start_time + user_duration;
+
+        preview($preview_video,preview_start_time);
       }
     });
 
@@ -68,18 +92,17 @@ define(function (require) {
       return px_to_min;
     }
 
-    function preview(start) {
+    function preview($elem,start) {
       var start_time = start;
-
 
       clearInterval(interval);
 
-      $preview_video.currentTime = start_time;
-      $preview_video.play();
+      $elem.currentTime = start_time;
+      $elem.play();
 
       interval = setInterval(function() {
-        $preview_video.currentTime = start_time;
-        $preview_video.play();
+        $elem.currentTime = start_time;
+        $elem.play();
       },10000);
 
     };
